@@ -1,0 +1,54 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: aionys-db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: R9!kZ7m@Qe2#LxP4H^sD
+      POSTGRES_DB: aionys_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - api-db
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: aionys-api
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=aionys_db;Username=admin;Password=R9!kZ7m@Qe2#LxP4H^sD
+    ports:
+      - "4758:4758"
+    networks:
+      - frontend-api
+      - api-db
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: aionys-client
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - api
+    networks:
+      - frontend-api
+
+volumes:
+  postgres_data:
+
+networks:
+  frontend-api:
+    driver: bridge
+  api-db:
+    driver: bridge

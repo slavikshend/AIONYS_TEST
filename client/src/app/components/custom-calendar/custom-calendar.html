@@ -1,0 +1,36 @@
+<div class="select-none bg-gray-50 p-4 rounded-2xl border border-gray-100 shadow-sm">
+    <div class="flex justify-between items-center mb-4">
+        <button (click)="changeMonth(-1)"
+            class="flex items-center justify-center p-1 hover:bg-gray-100 rounded-full transition-colors text-gray-600 cursor-pointer">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        <span class="font-bold text-gray-700 capitalize tracking-wide">
+            {{ viewDate() | date: 'MMMM yyyy' : '' : currentLang }}
+        </span>
+
+        <button (click)="changeMonth(1)"
+            class="flex cursor-pointer items-center justify-center p-1 hover:bg-gray-100 rounded-full transition-colors text-gray-600">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
+
+    <div class="grid grid-cols-7 gap-1 mb-2">
+        @for (day of ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']; track day) {
+        <div class="text-[10px] text-center font-bold text-gray-400 uppercase">
+            {{ 'CALENDAR.DAYS.' + day | translate }}
+        </div>
+        }
+    </div>
+
+    <div class="grid grid-cols-7 gap-1">
+        @for (day of daysInMonth(); track $index) {
+        <div (click)="selectDay(day)" [class.cursor-pointer]="day" [class.bg-gray-500]="selectedDate() === day"
+            [class.text-white]="selectedDate() === day" [class.hover:bg-gray-200]="day && selectedDate() !== day"
+            class="h-10 w-10 flex items-center justify-center rounded-xl text-sm font-semibold transition-all"
+            [ngClass]="{'text-gray-200': !day, 'text-gray-700': day && selectedDate() !== day}">
+            {{ day }}
+        </div>
+        }
+    </div>
+</div>

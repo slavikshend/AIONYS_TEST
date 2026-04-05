@@ -1,0 +1,33 @@
+{
+  "NOTES": {
+    "ADD_NEW": "Додати нову замітку",
+    "LOADING": "Завантаження нових заміток..."
+  },
+  "EDITOR": {
+    "TITLE_PLACEHOLDER": "Заголовок замітки",
+    "CONTENT_PLACEHOLDER": "Текст замітки..."
+  },
+  "SIDEBAR": {
+    "SEARCH_TITLE": "Пошук у замітках",
+    "SEARCH_PLACEHOLDER": "Знайти по тексту...",
+    "FILTER_TAGS": "Фільтр по тегах",
+    "CALENDAR_TITLE": "Архів за датами"
+  },
+  "COMMON": {
+    "CANCEL": "Скасувати",
+    "SAVE": "Зберегти",
+    "UPDATE": "Оновити",
+    "CONFIRM_DELETE": "Ви впевнені, що хочете видалити цю замітку?"
+  },
+  "CALENDAR": {
+    "DAYS": {
+      "MON": "Пн",
+      "TUE": "Вт",
+      "WED": "Ср",
+      "THU": "Чт",
+      "FRI": "Пт",
+      "SAT": "Сб",
+      "SUN": "Нд"
+    }
+  }
+}
