@@ -33,6 +33,8 @@ To open the Cypress Test Runner (GUI):
 
 `npx cypress open`
 
+To execute tests within the Cypress GUI, choose your preferred browser, and then click on the **todo.cy.js** spec file from the list to begin the automated run. The browser will open a new window where you can monitor each command and assertion in real-time as the test progresses.
+
 To execute all tests in the terminal without a GUI:
 
 `npx cypress run`
